@@ -324,19 +324,17 @@
             </div>
         </div>
 
-        <!-- Yahan IMPORTANT CHANGE kiya hai: Formspree ki link jodne ke liye action tag lagaya hai -->
         <!-- 1. Home Loan Section -->
         <div id="section-home" class="loan-section">
             <h2>HOME LOAN APPLICATION</h2>
-            <form action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
-                <input type="hidden" name="Loan Type" value="Home Loan">
+            <form onsubmit="submitToGoogleForms(event, 'Home Loan')">
                 <div class="form-grid">
-                    <div class="form-group"><label>Customer Full Name</label><input type="text" name="Customer Name" required placeholder="Enter Full Name"></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
-                    <div class="form-group"><label>PAN Card Number</label><input type="text" name="PAN Number" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
-                    <div class="form-group"><label>Aadhaar Number</label><input type="text" name="Aadhaar Number" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
-                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
-                    <div class="form-group"><label>Property Location</label><input type="text" name="Location" required placeholder="Enter Property Location"></div>
+                    <div class="form-group"><label>Customer Full Name</label><input type="text" id="home-name" required placeholder="Enter Full Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" id="home-mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group"><label>PAN Card Number</label><input type="text" id="home-pan" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
+                    <div class="form-group"><label>Aadhaar Number</label><input type="text" id="home-aadhaar" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
+                    <div class="form-group"><label>Loan Amount Required (₹)</label><input type="number" id="home-amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Property Location</label><input type="text" id="home-location" required placeholder="Enter Property Location"></div>
                 </div>
                 <button type="submit" class="btn-submit">Submit Details</button>
             </form>
@@ -345,15 +343,14 @@
         <!-- 2. Business Loan Section -->
         <div id="section-business" class="loan-section">
             <h2>BUSINESS LOAN APPLICATION</h2>
-            <form action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
-                <input type="hidden" name="Loan Type" value="Business Loan">
+            <form onsubmit="submitToGoogleForms(event, 'Business Loan')">
                 <div class="form-grid">
-                    <div class="form-group"><label>Business Owner Name</label><input type="text" name="Owner Name" required placeholder="Enter Owner Name"></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
-                    <div class="form-group"><label>PAN Card Number</label><input type="text" name="PAN Number" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
-                    <div class="form-group"><label>Aadhaar Number</label><input type="text" name="Aadhaar Number" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
-                    <div class="form-group"><label>Firm / Company Name</label><input type="text" name="Business Name" required placeholder="Enter Business Name"></div>
-                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Business Owner Name</label><input type="text" id="business-name" required placeholder="Enter Owner Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" id="business-mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group"><label>PAN Card Number</label><input type="text" id="business-pan" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
+                    <div class="form-group"><label>Aadhaar Number</label><input type="text" id="business-aadhaar" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
+                    <div class="form-group"><label>Firm / Company Name</label><input type="text" id="business-firm" required placeholder="Enter Business Name"></div>
+                    <div class="form-group"><label>Loan Amount Required (₹)</label><input type="number" id="business-amount" required placeholder="Enter Amount"></div>
                 </div>
                 <button type="submit" class="btn-submit">Submit Details</button>
             </form>
@@ -362,15 +359,14 @@
         <!-- 3. Personal Loan Section -->
         <div id="section-personal" class="loan-section">
             <h2>PERSONAL LOAN APPLICATION</h2>
-            <form action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
-                <input type="hidden" name="Loan Type" value="Personal Loan">
+            <form onsubmit="submitToGoogleForms(event, 'Personal Loan')">
                 <div class="form-grid">
-                    <div class="form-group"><label>Applicant Full Name</label><input type="text" name="Applicant Name" required placeholder="Enter Full Name"></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
-                    <div class="form-group"><label>PAN Card Number</label><input type="text" name="PAN Number" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
-                    <div class="form-group"><label>Aadhaar Number</label><input type="text" name="Aadhaar Number" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
-                    <div class="form-group"><label>Monthly Income (?)</label><input type="number" name="Monthly Income" required placeholder="Enter Monthly Salary/Income"></div>
-                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Applicant Full Name</label><input type="text" id="personal-name" required placeholder="Enter Full Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" id="personal-mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group"><label>PAN Card Number</label><input type="text" id="personal-pan" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
+                    <div class="form-group"><label>Aadhaar Number</label><input type="text" id="personal-aadhaar" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
+                    <div class="form-group"><label>Monthly Income (₹)</label><input type="number" id="personal-income" required placeholder="Enter Monthly Salary/Income"></div>
+                    <div class="form-group"><label>Loan Amount Required (₹)</label><input type="number" id="personal-amount" required placeholder="Enter Amount"></div>
                 </div>
                 <button type="submit" class="btn-submit">Submit Details</button>
             </form>
@@ -379,15 +375,14 @@
         <!-- 4. Loan Against Property Section -->
         <div id="section-property" class="loan-section">
             <h2>LOAN AGAINST PROPERTY APPLICATION</h2>
-            <form action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE" method="POST">
-                <input type="hidden" name="Loan Type" value="Loan Against Property">
+            <form onsubmit="submitToGoogleForms(event, 'Loan Against Property')">
                 <div class="form-grid">
-                    <div class="form-group"><label>Property Owner Name</label><input type="text" name="Owner Name" required placeholder="Enter Owner Name"></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
-                    <div class="form-group"><label>PAN Card Number</label><input type="text" name="PAN Number" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
-                    <div class="form-group"><label>Aadhaar Number</label><input type="text" name="Aadhaar Number" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
-                    <div class="form-group"><label>Property Type</label><input type="text" name="Property Type" required placeholder="e.g. Plot, House, Commercial"></div>
-                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Property Owner Name</label><input type="text" id="property-name" required placeholder="Enter Owner Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" id="property-mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group"><label>PAN Card Number</label><input type="text" id="property-pan" required placeholder="Enter PAN Number" style="text-transform: uppercase;"></div>
+                    <div class="form-group"><label>Aadhaar Number</label><input type="text" id="property-aadhaar" required placeholder="Enter 12 Digit Aadhaar" pattern="[0-9]{12}"></div>
+                    <div class="form-group"><label>Property Type</label><input type="text" id="property-type" required placeholder="e.g. Plot, House, Commercial"></div>
+                    <div class="form-group"><label>Loan Amount Required (₹)</label><input type="number" id="property-amount" required placeholder="Enter Amount"></div>
                 </div>
                 <button type="submit" class="btn-submit">Submit Details</button>
             </form>
@@ -409,13 +404,6 @@
         </div>
 
     </div>
-    <!-- सुंदर और आकर्षक लोन एप्लीकेशन बटन -->
-    <div style="text-align: center; margin: 35px 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <p style="font-size: 16px; color: #555; margin-bottom: 12px; font-weight: 500;">तुरंत लोन सहायता के लिए नीचे दिए गए बटन पर क्लिक करके अपनी डिटेल्स भरें:</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcXwrNVqY0CiNY1hCJhRazXrIOUPi47lD0OUvypefOqTKuGw/viewform?usp=publish-editor" target="_blank" style="background-color: #007bff; color: white; padding: 14px 32px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,123,255,0.3); display: inline-block; transition: all 0.3s ease;">
-            📝 लोन के लिए अप्लाई करें (Apply Online)
-        </a>
-    </div>
 
     <footer>
         <p>© 2026 Finacle Loan Providers. All Rights Reserved. | Designed for Umesh Yadav</p>
@@ -435,6 +423,71 @@
 
             document.getElementById('section-' + sectionId).classList.add('active');
             document.getElementById('card-' + sectionId).classList.add('active');
+        }
+
+        // यह जादुई फंक्शन डेटा सीधे आपकी गूगल शीट में भेज देगा
+        function submitToGoogleForms(event, loanType) {
+            event.preventDefault();
+            
+            // आपके गूगल फॉर्म का सबमिशन लिंक
+            const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfcXwrNVqY0CiNY1hCJhRazXrIOUPi47lD0OUvypefOqTKuGw/formResponse";
+            
+            let name, mobile, pan, aadhaar, amount, extraInfo = "";
+            
+            if(loanType === 'Home Loan') {
+                name = document.getElementById('home-name').value;
+                mobile = document.getElementById('home-mobile').value;
+                pan = document.getElementById('home-pan').value;
+                aadhaar = document.getElementById('home-aadhaar').value;
+                amount = document.getElementById('home-amount').value;
+                extraInfo = "Location: " + document.getElementById('home-location').value;
+            } else if(loanType === 'Business Loan') {
+                name = document.getElementById('business-name').value;
+                mobile = document.getElementById('business-mobile').value;
+                pan = document.getElementById('business-pan').value;
+                aadhaar = document.getElementById('business-aadhaar').value;
+                amount = document.getElementById('business-amount').value;
+                extraInfo = "Firm Name: " + document.getElementById('business-firm').value;
+            } else if(loanType === 'Personal Loan') {
+                name = document.getElementById('personal-name').value;
+                mobile = document.getElementById('personal-mobile').value;
+                pan = document.getElementById('personal-pan').value;
+                aadhaar = document.getElementById('personal-aadhaar').value;
+                amount = document.getElementById('personal-amount').value;
+                extraInfo = "Income: " + document.getElementById('personal-income').value;
+            } else if(loanType === 'Loan Against Property') {
+                name = document.getElementById('property-name').value;
+                mobile = document.getElementById('property-mobile').value;
+                pan = document.getElementById('property-pan').value;
+                aadhaar = document.getElementById('property-aadhaar').value;
+                amount = document.getElementById('property-amount').value;
+                extraInfo = "Prop Type: " + document.getElementById('property-type').value;
+            }
+
+            // फॉर्म डेटा तैयार करना (यह गूगल फॉर्म के बैकग्राउंड एंट्रीज से जुड़ता है)
+            const formData = new FormData();
+            
+            // नीचे दिए गए 'entry.XXXXX' नंबर ऑटो-मैप होकर आपके गूगल फॉर्म के सवालों में डेटा फिट कर देंगे
+            formData.append('entry.1843464104', name); 
+            formData.append('entry.1287173111', mobile);
+            formData.append('entry.1481075677', loanType);
+            formData.append('entry.2062634351', amount);
+            
+            // आपके फॉर्म में मौजूद अन्य अतिरिक्त फील्ड्स को मैनेज करने के लिए
+            formData.append('emailAddress', 'website-lead@finacle.com'); 
+
+            // बैकग्राउंड में डेटा सेंड करना
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                alert("धन्यवाद! आपकी " + loanType + " की डिटेल्स सफलतापूर्वक जमा हो गई हैं। हम जल्द ही आपसे संपर्क करेंगे।");
+                event.target.reset();
+            }).catch((error) => {
+                alert("क्षमा करें, कुछ तकनीकी समस्या आई। कृपया दोबारा प्रयास करें।");
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
