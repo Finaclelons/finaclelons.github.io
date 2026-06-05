@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finacle Loan Providers - Umesh Yadav</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #1a2530;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f1c2e 0%, #1f3554 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            color: #d4af37;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #0f1c2e;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border: 2px solid #e1e8ed;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card.active {
+            background: linear-gradient(135deg, #0f1c2e 0%, #1f3554 100%);
+            border-color: #d4af37;
+            color: white;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .service-card.active h3 {
+            color: #d4af37;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .service-card.active p {
+            color: #ddd;
+        }
+
+        .loan-section {
+            display: none;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border-top: 5px solid #d4af37;
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loan-section.active {
+            display: block;
+        }
+
+        .loan-section h2 {
+            color: #0f1c2e;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f4f6f9;
+            padding-bottom: 10px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #0f1c2e;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .btn-submit {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #0f1c2e 0%, #1f3554 100%);
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(15,28,46,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #1f3554 0%, #0f1c2e 100%);
+            color: #d4af37;
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .network-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .network-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #0f1c2e;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .bank-list {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #555;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #0f1c2e 0%, #1f3554 100%);
+            color: white;
+            padding: 40px 35px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            border-bottom: 4px solid #d4af37;
+        }
+
+        .contact-card h3 {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .contact-card .ceo-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .contact-card .role {
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            margin: 14px 0;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .contact-details strong {
+            color: #d4af37;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            width: 120px;
+            text-align: left;
+        }
+
+        @media(max-width: 600px) {
+            .contact-details strong {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        }
+
+        .contact-details a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: #d4af37;
+        }
+
+        footer {
+            background-color: #0f1c2e;
+            color: #888;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            border-top: 3px solid #d4af37;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 650px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-top: 5px solid #d4af37;
+            position: relative;
+            text-align: left;
+        }
+
+        .modal-content h2 {
+            color: #0f1c2e;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #f4f6f9;
+            padding-bottom: 10px;
+        }
+
+        .modal-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .modal-content a.help-mail {
+            color: #0f1c2e;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #0f1c2e;
+        }
+
+        .modal-content a.help-mail:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #0f1c2e;
+        }
+
+        /* Success Modal Design */
+        #successModal .modal-content {
+            text-align: center;
+            max-width: 480px;
+            border-top: 5px solid #2ecc71; /* Success Green */
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            font-size: 55px;
+            color: #2ecc71;
+            margin-bottom: 15px;
+        }
+
+        .btn-close-success {
+            margin-top: 20px;
+            padding: 12px 35px;
+            background-color: #0f1c2e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .btn-close-success:hover {
+            background-color: #1f3554;
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-text">FINACLE</div>
+        <h1>FINACLE LOAN PROVIDERS</h1>
+        <p>Aapki Pragati, Hamara Saath</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">HAMARI PRAMUKH SEVAEIN</h2>
+        <p class="section-subtitle">(Click on any loan card below to open its specific form)</p>
+        
+        <div class="services-grid">
+            <div class="service-card" id="card-home" onclick="showLoanSection('home')">
+                <h3>HOME LOAN</h3>
+                <p>Ghar Banane Ya Kharidne Ke Liye</p>
+            </div>
+            <div class="service-card" id="card-business" onclick="showLoanSection('business')">
+                <h3>BUSINESS LOAN</h3>
+                <p>Vyapaar Ko Badhane Ke Liye</p>
+            </div>
+            <div class="service-card" id="card-personal" onclick="showLoanSection('personal')">
+                <h3>PERSONAL LOAN</h3>
+                <p>Niji Zarooraton Ke Liye</p>
+            </div>
+            <div class="service-card" id="card-property" onclick="showLoanSection('property')">
+                <h3>LOAN AGAINST PROPERTY</h3>
+                <p>Apni Property Par Loan Paane Ke Liye</p>
+            </div>
+        </div>
+
+        <!-- 1. Home Loan Section -->
+        <div id="section-home" class="loan-section">
+            <h2>HOME LOAN APPLICATION</h2>
+            <form class="loan-form">
+                <input type="hidden" name="Loan Type" value="Home Loan">
+                <div class="form-grid">
+                    <div class="form-group"><label>Customer Full Name</label><input type="text" name="Customer Name" required placeholder="Enter Full Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <select name="Occupation" required>
+                            <option value="">--Select Occupation--</option>
+                            <option value="Salaried">Salaried</option>
+                            <option value="Self Employed / Business">Self Employed / Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Property Location</label><input type="text" name="Location" required placeholder="Enter Property Location"></div>
+                    <div class="form-group"><label>Sourcing Person Name</label><input type="text" name="Sourcing Person" placeholder="Enter Sourcing Person Name"></div>
+                </div>
+                <button type="submit" class="btn-submit">Submit Details</button>
+            </form>
+        </div>
+
+        <!-- 2. Business Loan Section -->
+        <div id="section-business" class="loan-section">
+            <h2>BUSINESS LOAN APPLICATION</h2>
+            <form class="loan-form">
+                <input type="hidden" name="Loan Type" value="Business Loan">
+                <div class="form-grid">
+                    <div class="form-group"><label>Business Owner Name</label><input type="text" name="Customer Name" required placeholder="Enter Owner Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <select name="Occupation" required>
+                            <option value="">--Select Occupation--</option>
+                            <option value="Salaried">Salaried</option>
+                            <option value="Self Employed / Business">Self Employed / Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Firm / Company Name</label><input type="text" name="Location" required placeholder="Enter Business Name"></div>
+                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Sourcing Person Name</label><input type="text" name="Sourcing Person" placeholder="Enter Sourcing Person Name"></div>
+                </div>
+                <button type="submit" class="btn-submit">Submit Details</button>
+            </form>
+        </div>
+
+        <!-- 3. Personal Loan Section -->
+        <div id="section-personal" class="loan-section">
+            <h2>PERSONAL LOAN APPLICATION</h2>
+            <form class="loan-form">
+                <input type="hidden" name="Loan Type" value="Personal Loan">
+                <div class="form-grid">
+                    <div class="form-group"><label>Applicant Full Name</label><input type="text" name="Customer Name" required placeholder="Enter Full Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <select name="Occupation" required>
+                            <option value="">--Select Occupation--</option>
+                            <option value="Salaried">Salaried</option>
+                            <option value="Self Employed / Business">Self Employed / Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Monthly Income (?)</label><input type="number" name="Location" required placeholder="Enter Monthly Salary/Income"></div>
+                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Sourcing Person Name</label><input type="text" name="Sourcing Person" placeholder="Enter Sourcing Person Name"></div>
+                </div>
+                <button type="submit" class="btn-submit">Submit Details</button>
+            </form>
+        </div>
+
+        <!-- 4. Loan Against Property Section -->
+        <div id="section-property" class="loan-section">
+            <h2>LOAN AGAINST PROPERTY APPLICATION</h2>
+            <form class="loan-form">
+                <input type="hidden" name="Loan Type" value="Loan Against Property">
+                <div class="form-grid">
+                    <div class="form-group"><label>Property Owner Name</label><input type="text" name="Customer Name" required placeholder="Enter Owner Name"></div>
+                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="Mobile" required placeholder="Enter 10 Digit Number" pattern="[0-9]{10}"></div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <select name="Occupation" required>
+                            <option value="">--Select Occupation--</option>
+                            <option value="Salaried">Salaried</option>
+                            <option value="Self Employed / Business">Self Employed / Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Property Type</label><input type="text" name="Location" required placeholder="e.g. Plot, House, Commercial"></div>
+                    <div class="form-group"><label>Loan Amount Required (?)</label><input type="number" name="Amount" required placeholder="Enter Amount"></div>
+                    <div class="form-group"><label>Sourcing Person Name</label><input type="text" name="Sourcing Person" placeholder="Enter Sourcing Person Name"></div>
+                </div>
+                <button type="submit" class="btn-submit">Submit Details</button>
+            </form>
+        </div>
+
+        <!-- UPDATED PARTNERS SECTION WITH BAJAJ & PIRAMAL FINANCE -->
+        <div class="network-section">
+            <p class="network-title">OUR TRUSTED NETWORK: ALL MAJOR BANKS & NBFCs</p>
+            <p class="bank-list">SBI | BOB | PNB | CANARA | HDFC | AXIS | ICICI | BAJAJ FINANCE | PIRAMAL FINANCE | TATA CAPITAL | L&T FINANCE</p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Corporate Leadership Desk</h3>
+            <div class="ceo-name">UMESH YADAV</div>
+            <p class="role">Chief Executive Officer & Founder</p>
+            <div class="contact-details">
+                <p><strong>Hotline:</strong> <a href="tel:+918650726468">+91 8650726468</a></p>
+                <p><strong>Email ID:</strong> <a href="mailto:umeshonline17@gmail.com">umeshonline17@gmail.com</a></p>
+                <p><strong>Head Office:</strong> Avas Vikas, Chandausi, U.P., India</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">?</div>
+            <h2>Form successfully filed</h2>
+            <p style="margin-top: 10px; font-size: 1.1rem; color: #444; font-weight: 500;">We will contact you shortly.</p>
+            <button class="btn-close-success" onclick="closeModal('successModal')">Close</button>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Box -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>At Finacle Loan Providers, we highly respect your privacy. The information collected through this website (such as Name, Mobile Number, and basic details) is strictly used to evaluate your loan eligibility and to contact you regarding your application.</p>
+            <p><strong>Data Security:</strong> We do not share, sell, or leak your personal data to any external commercial marketing agencies or third-party entities. Your data remains completely safe and confidential with our authorized team.</p>
+        </div>
+    </div>
+
+    <!-- Disclaimer Box -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('disclaimerModal')">&times;</span>
+            <h2>Disclaimer</h2>
+            <p>Finacle Loan Providers is an independent loan consultancy and Direct Selling Agent (DSA) firm. We act as a facilitator to help you secure loans from various leading Banks and NBFCs.</p>
+            <p><strong>Important Note:</strong> The final approval of the loan, interest rates, and processing terms depend entirely on the respective banking institutions and your credit score (CIBIL profile). We do not guarantee 100% approval, and we never demand any upfront cash advance or hidden processing fees from our clients.</p>
+        </div>
+    </div>
+
+    <!-- Help Box -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('helpModal')">&times;</span>
+            <h2>Help & Support</h2>
+            <p>If you are facing any difficulties while filling out the forms or have questions regarding your application status, please feel free to reach out to our dedicated support email.</p>
+            <p><strong>Email Support:</strong> Click the official link below to directly open your email client and drop us a line:</p>
+            <p style="text-align: center; margin: 20px 0;">
+                <a href="mailto:umeshonline17@gmail.com?subject=Loan Application Support Request&body=Hello Finacle Team, I am facing an issue with..." class="help-mail" style="font-size: 1.1rem; color: #d4af37;">?? Email us at: umeshonline17@gmail.com</a>
+            </p>
+            <p>Our support executive will look into your request and get back to you within 24 business hours.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Finacle Loan Providers. All Rights Reserved. | Umesh Yadav (CEO & Founder)</p>
+        <div class="footer-links">
+            <a onclick="openModal('privacyModal')">Privacy Policy</a> | 
+            <a onclick="openModal('disclaimerModal')">Disclaimer</a> |
+            <a onclick="openModal('helpModal')" style="color: #ffffff; background: #1f3554; padding: 2px 8px; border-radius: 4px;">Help</a>
+        </div>
+    </footer>
+
+    <script>
+        // Google Web App URL Config
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4ey4cBhorWMlYXNrdfvd5JDUfItA6oVXPCzRreZbjC595bWUw2CV4q9Wl2IP15859jw/exec";
+
+        window.onload = function() {
+            showLoanSection('home');
+            initForms();
+        };
+
+        function showLoanSection(sectionId) {
+            const sections = document.querySelectorAll('.loan-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => card.classList.remove('active'));
+
+            document.getElementById('section-' + sectionId).classList.add('active');
+            document.getElementById('card-' + sectionId).classList.add('active');
+        }
+
+        // Handle AJAX submission for all loan forms
+        function initForms() {
+            const forms = document.querySelectorAll('.loan-form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+                    
+                    const submitBtn = form.querySelector('.btn-submit');
+                    const originalBtnText = submitBtn.innerText;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "Submitting... Please Wait";
+
+                    const formData = new FormData(form);
+
+                    fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                        
+                        form.reset();
+                        openModal('successModal'); // Opens the updated popup
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert("Something went wrong. Please try again!");
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                    });
+                });
+            });
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal if clicked outside the content box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
